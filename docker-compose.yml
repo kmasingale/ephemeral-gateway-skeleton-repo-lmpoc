@@ -5,7 +5,7 @@
 version: '3.4'
 services:
   gateway-dev:
-    hostname: <yourGatewayHostName>
+    hostname: eksgw.eks.layer7.broadcom.com
     image: caapim/gateway:9.4.00
     ports:
     - "8081:8080"
