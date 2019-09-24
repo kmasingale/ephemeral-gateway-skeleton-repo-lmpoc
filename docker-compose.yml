@@ -1,0 +1,55 @@
+# Copyright (c) 2018 CA. All rights reserved.
+# This software may be modified and distributed under the terms
+# of the MIT license.  See the LICENSE file for details.
+
+version: '3.4'
+services:
+  gateway-dev:
+    hostname: <yourGatewayHostName>
+    image: caapim/gateway:9.4.00
+    ports:
+    - "8081:8080"
+    - "8444:8443"
+    - "8001:8000"
+    volumes:
+    - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
+    - ./deployment/build/gateway/deployment-1.0.0.gw7:/opt/docker/rc.d/deployment.gw7
+    #- ./AWS-SK/src/main/gateway/config/global-env.properties:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/env/global-env.properties
+    - ./Enterprise/src/main/gateway/config/global-env.properties:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/env/global-env.properties
+    - ./Enterprise/src/main/gateway/config/privateKeys:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/env/config/privateKeys
+    #- ./Enterprise/src/main/gateway/config/certificates:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/certificates
+    secrets:
+    - source: license
+      target: /opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
+    environment:
+      ACCEPT_LICENSE: "true"
+      SSG_ADMIN_USERNAME: "admin"
+      SSG_ADMIN_PASSWORD: "7layer"
+      ENV.PRIVATE_KEY.ssl: '{ "keystore": "Generic", "algorithm": "RSA", "keyPassword": "7layer" }'
+      ENV.CERTIFICATE.<yourCertName>: '{
+                      "verifyHostname" : false,
+                      "trustedForSsl" : true,
+                      "trustedAsSamlAttestingEntity" : true,
+                      "trustAnchor" : true,
+                      "revocationCheckingEnabled" : true,
+                      "trustedForSigningClientCerts" : true,
+                      "trustedForSigningServerCerts" : true,
+                      "trustedAsSamlIssuer" : true
+                      }'
+      ENV.CERTIFICATE_FILE.<yourFileName.pem>: |-
+                        Bag Attributes
+                            friendlyName: ssl
+                            localKeyID: EB BD C9 CA 10 5D F5 E4 21 5E 98 86 5E EE AF 57 8E AA 7F 4C 
+                        subject=/CN=your subject
+                        issuer=/CN=your issuer
+                        -----BEGIN CERTIFICATE-----
+                        MIIDADCCAeigAwIBAgIIAwRwML4xxgIwDQYJKoZIhvcNAQEMBQAwHjEcMBoGA1UE
+                        AxMTazhzZ3cubG1wb2MuYXBpbS5jYTAeFw0xOTA5MTcyMDI3MzVaFw0yNDA5MTUy
+                        MDI3MzVaMB4xHDAaBgNVBAMTE2s4c2d3LmxtcG9jLmFwaW0uY2EwggEiMA0GCSqG
+                        SIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr35cGO64nptONVHRf276cDkF0+yo52PuT
+                        Example---- Replace this Block with Your Gateway Public Cert -----
+                        -----END CERTIFICATE-----
+
+secrets:
+  license:
+    file: ./docker/license.xml
