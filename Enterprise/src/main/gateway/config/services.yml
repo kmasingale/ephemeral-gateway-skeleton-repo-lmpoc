@@ -1,0 +1,190 @@
+Enterprise/JWT/JWT-METADATA:
+  url: "/.well-known/v2.0/openid-configuration"
+  policy: "Enterprise/JWT/JWT-METADATA"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-KeyRoute:
+  url: "/route/key*"
+  policy: "Enterprise/Consul/Consul-KeyRoute"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Proxies/PROXY1:
+  url: "/rest/api01"
+  policy: "Enterprise/Proxies/PROXY1"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Proxies/ORDER:
+  url: "/order/*"
+  policy: "Enterprise/Proxies/ORDER"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/JWT/JWT-JWKSEP:
+  url: "/discovery/v2.0/keys"
+  policy: "Enterprise/JWT/JWT-JWKSEP"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-ServiceRoute:
+  url: "/microsvc*"
+  policy: "Enterprise/Consul/Consul-ServiceRoute"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-PUT:
+  url: "/put/key*"
+  policy: "Enterprise/Consul/Consul-PUT"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-AgentService:
+  url: "/agent/services"
+  policy: "Enterprise/Consul/Consul-AgentService"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-Get:
+  url: "/get/key*"
+  policy: "Enterprise/Consul/Consul-Get"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Proxies/CONTACT:
+  url: "/contact/*"
+  policy: "Enterprise/Proxies/CONTACT"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-DeRegisterService:
+  url: "/service/deregister"
+  policy: "Enterprise/Consul/Consul-DeRegisterService"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Proxies/CUSTOMER:
+  url: "/customer/*"
+  policy: "Enterprise/Proxies/CUSTOMER"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-RegisterService:
+  url: "/service/register"
+  policy: "Enterprise/Consul/Consul-RegisterService"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-ServiceCatalog:
+  url: "/service/catalog*"
+  policy: "Enterprise/Consul/Consul-ServiceCatalog"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/JWT/JWT-Basic:
+  url: "/mediate/getJWT"
+  policy: "Enterprise/JWT/JWT-Basic"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/JWT/JWT-Validate:
+  url: "/jwt/validate"
+  policy: "Enterprise/JWT/JWT-Validate"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Consul/Consul-Delete:
+  url: "/delete/key*"
+  policy: "Enterprise/Consul/Consul-Delete"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/AWS-SK1/AWS-Lambda:
+  url: "/lambda/getresponse"
+  policy: "Enterprise/AWS-SK1/AWS-Lambda"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Enterprise/Proxies/test:
+  url: "/example/game*"
+  policy: "Enterprise/Proxies/test"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false

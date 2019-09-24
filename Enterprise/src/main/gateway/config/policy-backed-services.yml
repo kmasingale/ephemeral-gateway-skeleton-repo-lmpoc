@@ -1,0 +1,10 @@
+Metrics:
+  interfaceName: "com.l7tech.external.assertions.pbsmel.server.ServiceMetricsProcessor"
+  operations:
+  - policy: "Enterprise/MasterTemplate/Metrics"
+    operationName: "process"
+Consul-BackgroundSyncService:
+  interfaceName: "com.l7tech.objectmodel.polback.BackgroundTask"
+  operations:
+  - policy: "Enterprise/MasterTemplate/Consul-CatalogSync"
+    operationName: "run"
