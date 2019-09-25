@@ -10,7 +10,7 @@ services:
     ports:
     - "8081:8080"
     - "8444:8443"
-    - "8001:8000"
+    - "8000:8000"
     volumes:
     - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
     - ./deployment/build/gateway/deployment-1.0.0.gw7:/opt/docker/rc.d/deployment.gw7
@@ -26,7 +26,7 @@ services:
       SSG_ADMIN_USERNAME: "admin"
       SSG_ADMIN_PASSWORD: "7layer"
       ENV.PRIVATE_KEY.ssl: '{ "keystore": "Generic", "algorithm": "RSA", "keyPassword": "7layer" }'
-      ENV.CERTIFICATE.<yourCertName>: '{
+      ENV.CERTIFICATE.eksgw.eks.layer7.broadcom.com.client: '{
                       "verifyHostname" : false,
                       "trustedForSsl" : true,
                       "trustedAsSamlAttestingEntity" : true,
@@ -36,18 +36,30 @@ services:
                       "trustedForSigningServerCerts" : true,
                       "trustedAsSamlIssuer" : true
                       }'
-      ENV.CERTIFICATE_FILE.<yourFileName.pem>: |-
+      ENV.CERTIFICATE_FILE.eksgw.eks.layer7.broadcom.com.client.pem: |-
                         Bag Attributes
                             friendlyName: ssl
-                            localKeyID: EB BD C9 CA 10 5D F5 E4 21 5E 98 86 5E EE AF 57 8E AA 7F 4C 
-                        subject=/CN=your subject
-                        issuer=/CN=your issuer
+                            localKeyID: F3 E0 AA F5 5D 37 CE 56 19 6B 08 70 EB 06 C7 F7 01 9A 4C 9B 
+                        subject=/CN=eksgw.eks.layer7.broadcom.com
+                        issuer=/CN=eksgw.eks.layer7.broadcom.com
                         -----BEGIN CERTIFICATE-----
-                        MIIDADCCAeigAwIBAgIIAwRwML4xxgIwDQYJKoZIhvcNAQEMBQAwHjEcMBoGA1UE
-                        AxMTazhzZ3cubG1wb2MuYXBpbS5jYTAeFw0xOTA5MTcyMDI3MzVaFw0yNDA5MTUy
-                        MDI3MzVaMB4xHDAaBgNVBAMTE2s4c2d3LmxtcG9jLmFwaW0uY2EwggEiMA0GCSqG
-                        SIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr35cGO64nptONVHRf276cDkF0+yo52PuT
-                        Example---- Replace this Block with Your Gateway Public Cert -----
+                        MIIDFTCCAf2gAwIBAgIJAPz1pWckwb6YMA0GCSqGSIb3DQEBDAUAMCgxJjAkBgNV
+                        BAMTHWVrc2d3LmVrcy5sYXllcjcuYnJvYWRjb20uY29tMB4XDTE5MDkyNDE4NDgw
+                        NFoXDTI5MDkyMTE4NDgwNFowKDEmMCQGA1UEAxMdZWtzZ3cuZWtzLmxheWVyNy5i
+                        cm9hZGNvbS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCidr1U
+                        pHI3+0UM7SkBInmXlfC1Y+HQcc8EQWM5P528tAeiEa4+GrpkiISMGDJ4kotd5T9S
+                        9D4XXgGpS2Tj+P2HoQLb4rPmr3YgtZWJbDFRSd96eEMNGNrRS+AP3eyUFE1hGdU/
+                        U7DYm+945cwxF4RWtHh0sSLjJZfGJ1NvRvGBysUlum2Z27NHR8pKepvvjbmj+erx
+                        ReimWvxQanGnlwFjCO3DZIKE4FRCbvJlJjfVDc9mTg2bfy1ztqSJiNgXQXBIz04K
+                        8OsntEmTdlc2QkIxWtoB0b5N0VXfQ9J9eJ2ItYwOfeFte2eyLys/sL9SYCdR4ItI
+                        2aPT/c0GACAj1ckLAgMBAAGjQjBAMB0GA1UdDgQWBBTz4Kr1XTfOVhlrCHDrBsf3
+                        AZpMmzAfBgNVHSMEGDAWgBTz4Kr1XTfOVhlrCHDrBsf3AZpMmzANBgkqhkiG9w0B
+                        AQwFAAOCAQEAUKLMj6OByl/OXOP4GxJih0g/U9JqCnx7X2oYmyGmi2kUsdf2egdc
+                        ycyTRjFJigKbUX/MwDWWXnorlounyAP1+nXn1SM3pGfUPklNo2PnWTho9JdDa0SZ
+                        rFb2ltyDCUVoavJwCEBUaDPeMQTQ48yBE5ULO7MacAQO5saX6J5nClsXdQdJwGoK
+                        3Duct0kCZdXEXJvn+kL2RWGxok7acwXmh8yrTxxJ9g4zVtE+QbAYZoqA/vn+ivBt
+                        YzxKQqe4Fu6Qc2rsVsnCj9dpzHh3W95du6IVEhwBnJrHIa+x7ETsaJAoSjaeDzR/
+                        3YGfSJTwmGrDjUl4xDOZxkkptyM73zHiTw==
                         -----END CERTIFICATE-----
 
 secrets:

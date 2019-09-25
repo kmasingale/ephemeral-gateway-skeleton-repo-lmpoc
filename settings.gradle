@@ -6,4 +6,4 @@
 
 rootProject.name = 'gatewaycicd'
 
-include 'deployment', 'Enterprise', 'gmu', 'AWS-SK'
+include 'deployment', 'Enterprise', 'gmu', 'AWS-SK1'

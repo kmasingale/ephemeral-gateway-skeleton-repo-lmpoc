@@ -8,6 +8,6 @@ GatewayExportConfig {
     folderPath = '/Enterprise'
     exportEntities = [
             privateKeys: [ "ssl" ],
-            certificates: ["k8sgw.apim.ca.client"]
+            certificates: ["eksgw.eks.layer7.broadcom.com.client"]
     ]
 }

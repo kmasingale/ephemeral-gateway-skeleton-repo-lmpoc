@@ -17,13 +17,40 @@
         </L7p:CommentAssertion>
         <wsp:All wsp:Usage="Required">
             <L7p:SetVariable>
+                <L7p:Expression><![CDATA[${request.http.parameter.jwt}]]></L7p:Expression>
+                <L7p:VariableToSet stringValue="jwtParm"/>
+            </L7p:SetVariable>
+            <L7p:SetVariable>
                 <L7p:Expression><![CDATA[${gateway.jwt.host}:${gateway.jwt.port}]]></L7p:Expression>
                 <L7p:VariableToSet stringValue="jwt.url"/>
             </L7p:SetVariable>
-            <L7p:SetVariable>
-                <L7p:Expression><![CDATA[${request.http.header.Authorization}]]></L7p:Expression>
-                <L7p:VariableToSet stringValue="jwt"/>
-            </L7p:SetVariable>
+            <wsp:OneOrMore wsp:Usage="Required">
+                <wsp:All wsp:Usage="Required">
+                    <L7p:ComparisonAssertion>
+                        <L7p:Expression1 stringValue="${jwtParm}"/>
+                        <L7p:Expression2 stringValue=""/>
+                        <L7p:Negate booleanValue="true"/>
+                        <L7p:Operator operator="EMPTY"/>
+                        <L7p:Predicates predicates="included">
+                            <L7p:item binary="included">
+                                <L7p:Negated booleanValue="true"/>
+                                <L7p:Operator operator="EMPTY"/>
+                                <L7p:RightValue stringValue=""/>
+                            </L7p:item>
+                        </L7p:Predicates>
+                    </L7p:ComparisonAssertion>
+                    <L7p:SetVariable>
+                        <L7p:Expression><![CDATA[${jwtParm}]]></L7p:Expression>
+                        <L7p:VariableToSet stringValue="jwt"/>
+                    </L7p:SetVariable>
+                </wsp:All>
+                <wsp:All wsp:Usage="Required">
+                    <L7p:SetVariable>
+                        <L7p:Expression><![CDATA[${request.http.header.Authorization}]]></L7p:Expression>
+                        <L7p:VariableToSet stringValue="jwt"/>
+                    </L7p:SetVariable>
+                </wsp:All>
+            </wsp:OneOrMore>
             <L7p:SetVariable>
                 <L7p:Expression/>
                 <L7p:ContentType stringValue="application/json; charset=utf-8"/>
