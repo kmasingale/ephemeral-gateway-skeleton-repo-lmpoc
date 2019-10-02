@@ -5,7 +5,7 @@
 version: '3.4'
 services:
   gateway-dev:
-    hostname: gw.eks.layer7.broadcom.com
+    hostname: eksgw.eks.layer7.broadcom.com
     image: caapim/gateway:9.4.00
     ports:
     - "8081:8080"
@@ -26,7 +26,7 @@ services:
       SSG_ADMIN_USERNAME: "admin"
       SSG_ADMIN_PASSWORD: "7layer"
       ENV.PRIVATE_KEY.ssl: '{ "keystore": "Generic", "algorithm": "RSA", "keyPassword": "7layer" }'
-      ENV.CERTIFICATE.gw.eks.layer7.broadcom.com.client: '{
+      ENV.CERTIFICATE.eksgw.eks.layer7.broadcom.com.client: '{
                       "verifyHostname" : false,
                       "trustedForSsl" : true,
                       "trustedAsSamlAttestingEntity" : true,
@@ -36,28 +36,30 @@ services:
                       "trustedForSigningServerCerts" : true,
                       "trustedAsSamlIssuer" : true
                       }'
-      ENV.CERTIFICATE_FILE.gw.eks.layer7.broadcom.com.client.pem: |-
+      ENV.CERTIFICATE_FILE.eksgw.eks.layer7.broadcom.com.client.pem: |-
                         Bag Attributes
                             friendlyName: ssl
-                            localKeyID: 2B 44 FB 30 67 BB A6 34 BA BB 24 DF 50 50 D9 F8 08 92 86 37 
-                        subject=/CN=gw.eks.layer7.broadcom.com
-                        issuer=/CN=gw.eks.layer7.broadcom.com
+                            localKeyID: F3 E0 AA F5 5D 37 CE 56 19 6B 08 70 EB 06 C7 F7 01 9A 4C 9B 
+                        subject=/CN=eksgw.eks.layer7.broadcom.com
+                        issuer=/CN=eksgw.eks.layer7.broadcom.com
                         -----BEGIN CERTIFICATE-----
-                        MIICxjCCAa4CCQD4I22vSzOjsjANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDDBpn
-                        dy5la3MubGF5ZXI3LmJyb2FkY29tLmNvbTAeFw0xOTA5MjcxODQzNTlaFw0yOTA5
-                        MjQxODQzNTlaMCUxIzAhBgNVBAMMGmd3LmVrcy5sYXllcjcuYnJvYWRjb20uY29t
-                        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuntjXn0pbEPzJ83Uh7e/
-                        e6bFEnXoykpeMc8E/CuqiUGlOtirIvgRBEmMeCprBdLajMOnNEqREzsVDgroNnfZ
-                        Z6EFDp+6bwpGH0bflzLs/Q/ZVBqoYI9ItK/KxQZ/zq89Jeqfbz/i72rSrwSooclf
-                        IlEGLGlsMym96wAt7Q6GYJ9VpECUp4EAo5wl0JRRWtm4ysCU/jRz5niHoqiDKmzq
-                        ANUbrk+ty9rEChlIwla9p4fcDBWNzIZ9RN9kacpeDathXQcyxBgML18KY2RwwsYT
-                        Hc8Gts2A4IJTHwcRyvAHNxMdsf73ZZl6zJ9iOgskPCoJgSnSd0995WI8pvWOOUbg
-                        jQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCg9o1d9pWj4RPeMe9k378OL0KyPeN5
-                        YBWD6MUU4cQo+GKqKh8cmaaU9Fw726q9FKrF+vUiPMrIda0gsJM1O/Bv8Qpx6wqj
-                        Jp/zowY6m8p3TG1Zizhgma9ZgqjsNJKpofp/XhyvRDYlLq8dKASpPpkbkN76HpyM
-                        M7cv1dZqm+TTeLjY/9uMwlmZWqb64FRk8JxG+OL6zEvDIOKtAq8S8GfwFGU6lr1p
-                        F/X+nOZN7NJ3S+U3QJcugnaXXtOOqskEgUsD1AguUMdGotBu+f/Elvw66n8LrPet
-                        wBDj8wiu2/C/eUVH+pKzAhiG+uSz+4fNeA8CIcsPlg+6pHA9s+XSxcgt
+                        MIIDFTCCAf2gAwIBAgIJAPz1pWckwb6YMA0GCSqGSIb3DQEBDAUAMCgxJjAkBgNV
+                        BAMTHWVrc2d3LmVrcy5sYXllcjcuYnJvYWRjb20uY29tMB4XDTE5MDkyNDE4NDgw
+                        NFoXDTI5MDkyMTE4NDgwNFowKDEmMCQGA1UEAxMdZWtzZ3cuZWtzLmxheWVyNy5i
+                        cm9hZGNvbS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCidr1U
+                        pHI3+0UM7SkBInmXlfC1Y+HQcc8EQWM5P528tAeiEa4+GrpkiISMGDJ4kotd5T9S
+                        9D4XXgGpS2Tj+P2HoQLb4rPmr3YgtZWJbDFRSd96eEMNGNrRS+AP3eyUFE1hGdU/
+                        U7DYm+945cwxF4RWtHh0sSLjJZfGJ1NvRvGBysUlum2Z27NHR8pKepvvjbmj+erx
+                        ReimWvxQanGnlwFjCO3DZIKE4FRCbvJlJjfVDc9mTg2bfy1ztqSJiNgXQXBIz04K
+                        8OsntEmTdlc2QkIxWtoB0b5N0VXfQ9J9eJ2ItYwOfeFte2eyLys/sL9SYCdR4ItI
+                        2aPT/c0GACAj1ckLAgMBAAGjQjBAMB0GA1UdDgQWBBTz4Kr1XTfOVhlrCHDrBsf3
+                        AZpMmzAfBgNVHSMEGDAWgBTz4Kr1XTfOVhlrCHDrBsf3AZpMmzANBgkqhkiG9w0B
+                        AQwFAAOCAQEAUKLMj6OByl/OXOP4GxJih0g/U9JqCnx7X2oYmyGmi2kUsdf2egdc
+                        ycyTRjFJigKbUX/MwDWWXnorlounyAP1+nXn1SM3pGfUPklNo2PnWTho9JdDa0SZ
+                        rFb2ltyDCUVoavJwCEBUaDPeMQTQ48yBE5ULO7MacAQO5saX6J5nClsXdQdJwGoK
+                        3Duct0kCZdXEXJvn+kL2RWGxok7acwXmh8yrTxxJ9g4zVtE+QbAYZoqA/vn+ivBt
+                        YzxKQqe4Fu6Qc2rsVsnCj9dpzHh3W95du6IVEhwBnJrHIa+x7ETsaJAoSjaeDzR/
+                        3YGfSJTwmGrDjUl4xDOZxkkptyM73zHiTw==
                         -----END CERTIFICATE-----
 
 secrets:
