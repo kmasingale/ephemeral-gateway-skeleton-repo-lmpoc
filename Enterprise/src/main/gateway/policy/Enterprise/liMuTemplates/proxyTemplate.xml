@@ -9,7 +9,7 @@
                 <L7p:VariableToSet stringValue="requestHost"/>
             </L7p:SetVariable>
             <L7p:SetVariable>
-                <L7p:Expression><![CDATA[2048c.lmpoc.apim.ca]]></L7p:Expression>
+                <L7p:Expression><![CDATA[2048c.eks.layer7.broadcom.com]]></L7p:Expression>
                 <L7p:VariableToSet stringValue="webAppHost"/>
             </L7p:SetVariable>
             <L7p:SetVariable>
