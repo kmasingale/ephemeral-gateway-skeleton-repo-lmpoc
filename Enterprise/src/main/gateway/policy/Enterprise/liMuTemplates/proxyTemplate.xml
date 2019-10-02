@@ -9,7 +9,7 @@
                 <L7p:VariableToSet stringValue="requestHost"/>
             </L7p:SetVariable>
             <L7p:SetVariable>
-                <L7p:Expression><![CDATA[2048c.eks.layer7.broadcom.com]]></L7p:Expression>
+                <L7p:Expression><![CDATA[2048c.lmpoc.apim.ca]]></L7p:Expression>
                 <L7p:VariableToSet stringValue="webAppHost"/>
             </L7p:SetVariable>
             <L7p:SetVariable>
@@ -124,27 +124,8 @@ http://${webAppHost}/${newURL}${query}]]></L7p:Detail>
             <L7p:Level stringValue="WARNING"/>
         </L7p:AuditDetailAssertion>
         <L7p:HttpRoutingAssertion>
-            <L7p:Enabled booleanValue="false"/>
             <L7p:FailOnErrorStatus booleanValue="false"/>
             <L7p:ProtectedServiceUrl stringValue="http://${webAppHost}/${newURL}${query}"/>
-            <L7p:ProxyPassword stringValueNull="null"/>
-            <L7p:ProxyUsername stringValueNull="null"/>
-            <L7p:RequestHeaderRules httpPassthroughRuleSet="included">
-                <L7p:ForwardAll booleanValue="true"/>
-                <L7p:Rules httpPassthroughRules="included"/>
-            </L7p:RequestHeaderRules>
-            <L7p:RequestParamRules httpPassthroughRuleSet="included">
-                <L7p:ForwardAll booleanValue="true"/>
-                <L7p:Rules httpPassthroughRules="included"/>
-            </L7p:RequestParamRules>
-            <L7p:ResponseHeaderRules httpPassthroughRuleSet="included">
-                <L7p:ForwardAll booleanValue="true"/>
-                <L7p:Rules httpPassthroughRules="included"/>
-            </L7p:ResponseHeaderRules>
-        </L7p:HttpRoutingAssertion>
-        <L7p:HttpRoutingAssertion>
-            <L7p:FailOnErrorStatus booleanValue="false"/>
-            <L7p:ProtectedServiceUrl stringValue="http://${webAppHost}/${newURL}"/>
             <L7p:ProxyPassword stringValueNull="null"/>
             <L7p:ProxyUsername stringValueNull="null"/>
             <L7p:RequestHeaderRules httpPassthroughRuleSet="included">
